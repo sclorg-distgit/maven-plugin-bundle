@@ -1,0 +1,13 @@
+diff -Naur maven-bundle-plugin-2.3.5.orig/src/main/java/org/apache/felix/obrplugin/RemoteFileManager.java maven-bundle-plugin-2.3.5/src/main/java/org/apache/felix/obrplugin/RemoteFileManager.java
+--- maven-bundle-plugin-2.3.5.orig/src/main/java/org/apache/felix/obrplugin/RemoteFileManager.java	2011-07-05 13:56:05.000000000 +0200
++++ maven-bundle-plugin-2.3.5/src/main/java/org/apache/felix/obrplugin/RemoteFileManager.java	2011-11-14 18:21:26.878801248 +0100
+@@ -125,6 +125,9 @@
+         {
+             throw new MojoExecutionException( "Unable to configure Wagon: '" + repository.getProtocol() + "'", e );
+         }
++        catch ( Exception e )
++        {
++        }
+ 
+         try
+         {
