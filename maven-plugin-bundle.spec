@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        2.3.7
-Release:        12.11%{?dist}
+Release:        12.12%{?dist}
 Summary:        Maven Bundle Plugin
 
 License:        ASL 2.0
@@ -16,27 +16,27 @@ Source0:        http://archive.apache.org/dist/felix/%{site_name}-%{version}-sou
 Patch0:         %{site_name}-dependency.patch
 Patch1:         %{site_name}-unreported-exception.patch
 
-BuildRequires: maven30-aqute-bndlib >= 1.50.0
-BuildRequires: maven30-plexus-utils >= 1.4.5
-BuildRequires: maven30-felix-osgi-obr
-BuildRequires: maven30-kxml
+BuildRequires: %{?scl_prefix}aqute-bndlib >= 1.50.0
+BuildRequires: %{?scl_prefix}plexus-utils >= 1.4.5
+BuildRequires: %{?scl_prefix}felix-osgi-obr
+BuildRequires: %{?scl_prefix}kxml
 BuildRequires: %{?scl_prefix_java_common}maven-local
-BuildRequires: maven30-maven-dependency-tree >= 1.1-3
-BuildRequires: maven30-maven-compiler-plugin
-BuildRequires: maven30-maven-install-plugin
-BuildRequires: maven30-maven-jar-plugin
-BuildRequires: maven30-maven-javadoc-plugin
-BuildRequires: maven30-maven-plugin-plugin
-BuildRequires: maven30-maven-resources-plugin
-BuildRequires: maven30-maven-surefire-plugin >= 2.3
-BuildRequires: maven30-maven-doxia-sitetools
-BuildRequires: maven30-maven-osgi
-BuildRequires: maven30-maven-archiver
-BuildRequires: maven30-maven-plugin-testing-harness
-BuildRequires: maven30-plexus-archiver
-BuildRequires: maven30-plexus-containers-container-default
-BuildRequires: maven30-felix-parent
-BuildRequires: maven30-felix-bundlerepository
+BuildRequires: %{?scl_prefix}maven-dependency-tree >= 1.1-3
+BuildRequires: %{?scl_prefix}maven-compiler-plugin
+BuildRequires: %{?scl_prefix}maven-install-plugin
+BuildRequires: %{?scl_prefix}maven-jar-plugin
+BuildRequires: %{?scl_prefix}maven-javadoc-plugin
+BuildRequires: %{?scl_prefix}maven-plugin-plugin
+BuildRequires: %{?scl_prefix}maven-resources-plugin
+BuildRequires: %{?scl_prefix}maven-surefire-plugin >= 2.3
+BuildRequires: %{?scl_prefix}maven-doxia-sitetools
+BuildRequires: %{?scl_prefix}maven-osgi
+BuildRequires: %{?scl_prefix}maven-archiver
+BuildRequires: %{?scl_prefix}maven-plugin-testing-harness
+BuildRequires: %{?scl_prefix}plexus-archiver
+BuildRequires: %{?scl_prefix}plexus-containers-container-default
+BuildRequires: %{?scl_prefix}felix-parent
+BuildRequires: %{?scl_prefix}felix-bundlerepository
 
 BuildArch: noarch
 
@@ -54,7 +54,7 @@ API documentation for %{pkg_name}.
 
 %prep
 %setup -q -n %{site_name}-%{version}
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 
 %patch0 -p1
@@ -67,13 +67,13 @@ set -e -x
 %{?scl:EOF}
 
 %build
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_build
 %{?scl:EOF}
 
 %install
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_install
 %{?scl:EOF}
@@ -85,6 +85,9 @@ set -e -x
 %doc LICENSE NOTICE
 
 %changelog
+* Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 2.3.7-12.12
+- maven33 rebuild #2
+
 * Sat Jan 09 2016 Michal Srb <msrb@redhat.com> - 2.3.7-12.11
 - maven33 rebuild
 
