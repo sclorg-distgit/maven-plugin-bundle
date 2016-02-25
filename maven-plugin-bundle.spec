@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        2.3.7
-Release:        12.12%{?dist}
+Release:        12.13%{?dist}
 Summary:        Maven Bundle Plugin
 
 License:        ASL 2.0
@@ -20,7 +20,7 @@ BuildRequires: %{?scl_prefix}aqute-bndlib >= 1.50.0
 BuildRequires: %{?scl_prefix}plexus-utils >= 1.4.5
 BuildRequires: %{?scl_prefix}felix-osgi-obr
 BuildRequires: %{?scl_prefix}kxml
-BuildRequires: %{?scl_prefix_java_common}maven-local
+BuildRequires: %{?scl_prefix}maven-local
 BuildRequires: %{?scl_prefix}maven-dependency-tree >= 1.1-3
 BuildRequires: %{?scl_prefix}maven-compiler-plugin
 BuildRequires: %{?scl_prefix}maven-install-plugin
@@ -85,6 +85,9 @@ set -e -x
 %doc LICENSE NOTICE
 
 %changelog
+* Mon Feb 08 2016 Michal Srb <msrb@redhat.com> - 2.3.7-12.13
+- Fix BR on maven-local & co.
+
 * Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 2.3.7-12.12
 - maven33 rebuild #2
 
